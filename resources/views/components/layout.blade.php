@@ -11,8 +11,8 @@
     <header>
         <nav>
             <h1>EYCE</h1>
-            <a href="/eyce">All Blogs</a>
-            <a href="/eyce/create">Create New Blog</a>
+            <a href="{{ route('eyce.index') }}">All Blogs</a>
+            <a href="{{ route('eyce.create') }}">Create New Blog</a>
         </nav>
     </header>
 

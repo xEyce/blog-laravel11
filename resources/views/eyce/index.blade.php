@@ -1,19 +1,15 @@
 <x-layout>
     <h2>EYCE's Blogs</h2>
     
-    @if($greeting == "Welcome to my Blog page!")
-        <p>{{ $greeting}}</p>
-    @endif
-
     <ul>
-        @foreach($blogs as $blog)
+        @foreach($eyces as $eyce)
             <li>
-                <x-card href="/eyce/{{ $blog['id'] }}" :highlight="$blog['skill'] > 70">
-                <h3>{{ $blog["title"] }}</h3>
+                <x-card href="{{ route('eyce.show', $eyce->id) }}" :highlight="$eyce['skill'] > 70">
+                <h3>{{ $eyce->name }}</h3>
                 </x-card>
             </li>
         @endforeach
     </ul>
 
-    <a href="/" class="btn">Back</a>
+    {{ $eyces->links() }}
 </x-layout>
