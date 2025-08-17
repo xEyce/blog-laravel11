@@ -5,7 +5,11 @@
         @foreach($eyces as $eyce)
             <li>
                 <x-card href="{{ route('eyce.show', $eyce->id) }}" :highlight="$eyce['skill'] > 70">
-                <h3>{{ $eyce->name }}</h3>
+                <div>
+                    <h3>{{ $eyce->name }}</h3>
+                    <p>{{ $eyce->village->name }}</p>
+                </div>
+                
                 </x-card>
             </li>
         @endforeach

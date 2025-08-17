@@ -21,7 +21,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
+            VillageSeeder::class,
             EyceSeeder::class,
+            
         ]);
     }
 }

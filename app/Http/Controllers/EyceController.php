@@ -10,15 +10,16 @@ class EyceController extends Controller
     public function index(){
         // route --> /ninjas/
         // fetch all records & pass into the index view
-        $eyces = Eyce::orderBy('created_at', 'desc')->paginate(10);
+        $eyces = Eyce::with('village')->orderBy('created_at', 'desc')->paginate(10);
 
         return view('eyce.index', ["eyces" => $eyces]);
     }
 
     public function show($id){
         // route --> /ninjas/{id}
-        // fetch a single record & pass into show view
-        $eyce = Eyce::findOrFail($id);
+        // fetch a single record & pass into show view 
+
+        $eyce = Eyce::with('village')->findOrFail($id);
         return view('eyce.show', ["eyce" => $eyce]);
     }
 

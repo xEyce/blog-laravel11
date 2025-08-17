@@ -11,4 +11,8 @@ class Eyce extends Model
 
     /** @use HasFactory<\Database\Factories\EyceFactory> */
     use HasFactory;
+
+    public function village() {
+        return $this->belongsTo(Village::class);
+    }
 }

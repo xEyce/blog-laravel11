@@ -6,4 +6,11 @@
         <p><strong>About Me: </strong></p>
         <p>{{ $eyce->bio }}</p>
     </div>
+
+    <div class="border-2 border-dashed bg-white px-4 pb-4 my-4 rounded">
+        <h3>Company Information</h3>
+        <p><strong>Company Name: </strong>{{ $eyce->village->name }}</p>
+        <p><strong>Location: </strong>{{ $eyce->village->location }}</p>
+        <p><strong>Description: </strong>{{ $eyce->village->description }}</p>
+    </div>
 </x-layout>
