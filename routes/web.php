@@ -8,8 +8,8 @@ Route::get('/', function () {
 
 Route::get('/eyce', function (){
     $blogs = [
-        ["id" => 1, "title" => "First Week", "date" => "8-17-2025", "content" => "description"],
-        ["id" => 2, "title" => "Second Week", "date" => "8-124-2025", "content" => "description"]
+        ["id" => 1, "title" => "First Week", "skill" => 75, "content" => "description"],
+        ["id" => 2, "title" => "Second Week", "skill" => 50, "content" => "description"]
     ];
 
     return view('eyce.index', ["greeting" => "Welcome to my Blog page!",

@@ -8,11 +8,12 @@
     <ul>
         @foreach($blogs as $blog)
             <li>
-                <p>{{ $blog["title"] }}</p>
-                <a href="/eyce/{{ $blog["id"] }}">View Details</a>
+                <x-card href="/eyce/{{ $blog['id'] }}" :highlight="$blog['skill'] > 70">
+                <h3>{{ $blog["title"] }}</h3>
+                </x-card>
             </li>
         @endforeach
     </ul>
 
-    <a href="/">Back</a>
+    <a href="/" class="btn">Back</a>
 </x-layout>
