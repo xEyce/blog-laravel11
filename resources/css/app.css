@@ -24,6 +24,10 @@ p {
   @apply my-2;
 }
 
+input, textarea, select {
+  @apply bg-white;
+}
+
 /* header */
 header {
   @apply bg-white;

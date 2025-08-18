@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Eyce;
+use App\Models\Village;
 
 class EyceController extends Controller
 {
@@ -26,7 +27,9 @@ class EyceController extends Controller
     public function create(){
         // route --> /ninjas/create
         // render a create view (with web form) to users
-        return view('eyce.create');
+        $villages = Village::all();
+
+        return view('eyce.create', ["villages" => $villages]);
     }
 
     public function store() {
