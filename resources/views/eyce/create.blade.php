@@ -1,5 +1,5 @@
 <x-layout>
-    <form action="" method="POST">
+    <form action="{{ route('eyce.store') }}" method="POST">
     @csrf
 
     <h2>Create a New List</h2>
@@ -20,6 +20,7 @@
         type="number" 
         id="skill" 
         name="skill" 
+        value="{{ old('skill') }}" 
         required
     >
 
@@ -29,21 +30,31 @@
         rows="5"
         id="bio" 
         name="bio" 
+        
         required
-    ></textarea>
+    >{{ old('bio') }}</textarea>
 
     <!-- select a dojo -->
     <label for="village_id">Company:</label>
     <select id="village_id" name="village_id" required>
         <option value="" disabled selected>Select a company</option>
         @foreach($villages as $village)
-            <option value="{{ $village->id }}">{{ $village->name }}</option>
+            <option value="{{ $village->id }}" {{ $village->id == old('village_id') ? 'selected' : '' }}>
+                {{ $village->name }}
+            </option>
         @endforeach
     </select>
 
     <button type="submit" class="btn mt-4">Create List</button>
 
     <!-- validation errors -->
+    @if($errors->any())
+        <ul class="px-4 py-2 bg-red-100">
+            @foreach($errors->all() as $error)
+                <li class="my-2 text-red-500">{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
     
     </form>
 </x-layout>

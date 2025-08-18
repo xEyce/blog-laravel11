@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Eyce extends Model
 {
-    protected $fillable = ['name', 'skill', 'bio'];
+    protected $fillable = ['name', 'skill', 'bio', 'village_id'];
 
     /** @use HasFactory<\Database\Factories\EyceFactory> */
     use HasFactory;

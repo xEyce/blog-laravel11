@@ -13,4 +13,10 @@
         <p><strong>Location: </strong>{{ $eyce->village->location }}</p>
         <p><strong>Description: </strong>{{ $eyce->village->description }}</p>
     </div>
+
+    <form action="{{ route('eyce.destroy', $eyce->id) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button  type="submit" class="btn my-4">Delete</button>
+    </form>
 </x-layout>

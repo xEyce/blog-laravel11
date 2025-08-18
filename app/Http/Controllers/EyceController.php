@@ -32,14 +32,28 @@ class EyceController extends Controller
         return view('eyce.create', ["villages" => $villages]);
     }
 
-    public function store() {
+    public function store(Request $request) {
         // --> /ninjas/ (POST)
         // hanlde POST request to store a new ninja record in table
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'skill' => 'required|integer|min:0|max:100',
+            'bio' => 'required|string|min:20|max:1000',
+            'village_id' => 'required|exists:villages,id',
+        ]);
+
+        Eyce::create($validated);
+
+        return redirect()->route('eyce.index')->with('success', 'Person Added!');
     }
 
     public function destroy($id) {
         // --> /ninjas/{id} (DELETE)
         // handle delete request to delete a ninja record from table
+        $eyce = Eyce::findOrFail($id);
+        $eyce->delete();
+
+        return redirect()->route('eyce.index')->with('success', 'Person Deleted!');
     }
 
     // edit() and update() for edit view and update requests
