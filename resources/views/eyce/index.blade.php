@@ -9,7 +9,6 @@
                     <h3>{{ $eyce->name }}</h3>
                     <p>{{ $eyce->village->name }}</p>
                 </div>
-                
                 </x-card>
             </li>
         @endforeach

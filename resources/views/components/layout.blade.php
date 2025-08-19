@@ -18,6 +18,10 @@
             <h1>EYCE</h1>
             <a href="{{ route('eyce.index') }}">All Blogs</a>
             <a href="{{ route('eyce.create') }}">Create New Blog</a>
+
+            <a href="{{ route('show.login') }}" class="btn">Login</a>
+            <a href="{{ route('show.register') }}" class="btn">Register</a>
+            
         </nav>
     </header>
 
