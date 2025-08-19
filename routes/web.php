@@ -8,14 +8,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/register', [AuthController::class, 'showRegister'])->name('show.register');
-Route::get('/login', [AuthController::class, 'showLogin'])->name('show.login');
-Route::post('/register', [AuthController::class, 'register'])->name('register');
-Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::middleware('guest')->controller(AuthController::class)->group(function() {
+    Route::get('/register', 'showRegister')->name('show.register');
+    Route::get('/login', 'showLogin')->name('show.login');
+    Route::post('/register', 'register')->name('register');
+    Route::post('/login', 'login')->name('login'); 
+});
+
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/eyce', [EyceController::class, 'index'])->name('eyce.index');
-Route::get('/eyce/create', [EyceController::class, 'create'])->name('eyce.create');
-Route::get('/eyce/{id}', [EyceController::class, 'show'])->name('eyce.show');
-Route::post('/eyce', [EyceController::class, 'store'])->name('eyce.store');
-Route::delete('/eyce/{id}', [EyceController::class, 'destroy'])->name('eyce.destroy');
+Route::middleware('auth')->controller(EyceController::class)->group(function() {
+    Route::get('/eyce', 'index')->name('eyce.index');
+    Route::get('/eyce/create', 'create')->name('eyce.create');
+    Route::get('/eyce/{id}', 'show')->name('eyce.show');
+    Route::post('/eyce', 'store')->name('eyce.store');
+    Route::delete('/eyce/{id}', 'destroy')->name('eyce.destroy');
+});
+
